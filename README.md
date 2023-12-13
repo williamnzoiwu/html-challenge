@@ -3,10 +3,10 @@
 This code contains two Jupyter notebooks scraping data from a news site.
 
 ### Part 1: Mars News
-This script first uses automated browsing to visit the Mars news website. It then creates a Beautiful Soup object named "soup" to extract text elements from the website. It then creates an empty list to store the title and preview element from the scraped text data. Both elements are stored as a title-and-preview pair in a Python dictionary, each with two keys: title and preview. The dictionaries are then stored in the empty list, and the list is then printed.
+This script first uses automated browsing to visit the Mars news website in a new Chrome window. It then creates a Beautiful Soup object named "soup" to extract text elements from the website. It then creates an empty list to store the title and preview element from the scraped text data. Both elements are stored as a title-and-preview pair in a Python dictionary, each with two keys: title and preview. The dictionaries are then stored in the empty list, and the list is then printed.
 
 ### Part 2: Mars Weather
-The second notebook also first uses automated browsing to visit a the Mars Temperature Data SiteLinks website. It then creates a Beautiful Soup object and uses it to scrape the data in the HTML table. The scraped data is the put into a Pandas DataFrame with the same column headings as the table on the website. The column descriptions are as follows:
+The second notebook also first uses automated browsing to visit a the Mars Temperature Data SiteLinks website in a new Chrome window. It then creates a Beautiful Soup object and uses it to scrape the data in the HTML table. The scraped data is the put into a Pandas DataFrame with the same column headings as the table on the website. The column descriptions are as follows:
 
 id: the identification number of a single transmission from the Curiosity rover
 terrestrial_date: the date on Earth
@@ -23,21 +23,14 @@ pressure: The atmospheric pressure at Curiosity's location
 
 All the data types are defaulted as objects, so the script then changes the majority of the data types: the "terrestrial_date" column is changed to datetime, the "ls", "sol", and "month" columns are changed to integers, and the "min_temp" and "pressure" columns are changed to floats. The dataset is then analyzed by using Pandas functions to answer the following questions:
 
-How many months exist on Mars? (This is asnwered by using a groupby and then a count of the "month" column.)
+How many months exist on Mars? (This is answered by using a groupby and a count of the "month" column.)
 
-How many Martian (and not Earth) days worth of data exist in the scraped dataset?
+How many Martian days worth of data exist in the scraped dataset? (This is done by simply counting the rows of data.)
 
-What are the coldest and the warmest months on Mars (at the location of Curiosity)? To answer this question:
+What are the coldest and the warmest months on Mars? (This is answered by getting the average min temperature for each month, and then seeing which month the lowest temperature and which month has the highest.)
 
-Find the average minimum daily temperature for all of the months.
-Plot the results as a bar chart.
+Which months have the lowest and the highest atmospheric pressure on Mars? (This is answered very similarly to the last one, just taking the average pressure for each month instead of the temperature.)
 
-Which months have the lowest and the highest atmospheric pressure on Mars? To answer this question:
-Find the average daily atmospheric pressure of all the months.
-Plot the results as a bar chart.
+About how many terrestrial (Earth) days exist in a Martian year? (This is displayed by plotting the daily minimum temperature across the whole dataset.)
 
-About how many terrestrial (Earth) days exist in a Martian year? To answer this question:
-Consider how many days elapse on Earth in the time that Mars circles the Sun once.
-Visually estimate the result by plotting the daily minimum temperature.
-
-Lastly, the DataFrame is exported to a CSV file.
+Lastly, after all of the analysis is done, the DataFrame is exported to a CSV file.
